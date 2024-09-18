@@ -1,0 +1,9 @@
+1) Initialize Git Repository (Optional) Command: git init
+2) Install Python Virtual environemnt, Command python3 -m venv (. / "env")
+3) Activate Virtual environment, command: source bin/activate
+4) Create requirements.txt file and add the desired dependencies inside (django, django-rest-framework)
+5) Install dependencies, command: pip install -r requirements.txt
+6) build django project, command django-admin startproject "Project Name" (. / "Path")
+7) Create django application, command python3 manage.py startapp "app name"
+8) python3 manage.py runserver 0.0.0.0:8000 
+9) in chrome, navigate to localhost:8000 / 127.0.0.1:8000 and check everything is working fine.
