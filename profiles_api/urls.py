@@ -9,7 +9,7 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register("hello-viewset", views.HelloViewSet, basename="views")
 router.register('profiles', views.BuiltInUserProfileViewSet, basename="user-profile")
-
+router.register('feed', views.ProfileFeedItemViewSet, basename='user-feed')
 
 urlpatterns = [
     path("hello-view/", views.HelloAPIView.as_view()),

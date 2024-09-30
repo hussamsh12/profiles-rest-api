@@ -58,3 +58,19 @@ class BuiltInUserProfileSerializer(serializers.ModelSerializer):
 
         return super().update(instance, validated_data)
 
+
+class ProfileFeedItemSerializer(serializers.ModelSerializer):
+    """ Serializer for the Profile Feed Item"""
+
+    user_email = serializers.EmailField(source='user_profile.email', read_only=True)
+
+    class Meta:
+        model = models.ProfileFeedItem
+
+        fields = ('id', 'user_profile', 'status_text', 'user_email', 'created_on')
+
+        extra_kwargs = {
+            'user_profile': {
+                "read_only": True
+            }
+        }

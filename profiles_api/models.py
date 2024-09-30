@@ -2,6 +2,7 @@ from django.db import models
 
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
+from profiles_project import settings
 
 class UserProfileManager(BaseUserManager):
     """Manages our UserProfile model"""
@@ -52,3 +53,21 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         """String Representation of our UserProfile"""
         return "Email = {}, Name = {}".format(self.email, self.name)
+
+
+
+class ProfileFeedItem(models.Model):
+    """ Profiles Status Update"""
+
+    #Foreign Key is a one to many relation
+    user_profile = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+
+    status_text = models.CharField(max_length=255)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        """String representation of the Feed item"""
+        return self.status_text
